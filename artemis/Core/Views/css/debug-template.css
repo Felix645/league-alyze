@@ -1,0 +1,455 @@
+/* Main CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --default-width: 65%;
+    --xl-width: 75%;
+    --lg-width: 85%;
+    --md-width: 97%;
+
+    --main-color: #047857;
+    --border: #d4d4d4;
+    --main-color-hover: #065F46;
+    --main-color-active: #064E3B;
+    --default-bg: #FFFFFF;
+
+    --body-bottom-margin: 20rem;
+    --nav-height: 3rem;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+
+body > * {
+    display: none;
+}
+
+body .debug-header,
+body .debug-main {
+    display: block;
+}
+
+body.margin-bottom {
+    margin-bottom: var(--body-bottom-margin);
+}
+
+header {
+    width: var(--default-width);
+    background-color: var(--default-bg);
+    margin-top: 3rem;
+    padding: 3rem;
+    border: 1px solid var(--border)
+}
+
+header .exception {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: var(--main-color-active);
+}
+
+header .message {
+    color: var(--main-color);
+}
+
+header .domain a:hover {
+    color: var(--main-color-hover);
+    text-decoration: underline;
+}
+
+main {
+    width: var(--default-width);
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+}
+
+main .nav {
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: var(--nav-height);
+}
+
+main .nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+main .nav ul li {
+    height: 100%;
+}
+
+main .nav ul button {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    padding: 0 1.5rem;
+    height: 100%;
+}
+
+main .nav ul button:hover {
+    background-color: var(--main-color-hover);
+    cursor: pointer;
+}
+
+main .nav ul button.active {
+    background-color: var(--main-color-active);
+    cursor: pointer;
+}
+
+main .main-content {
+    width: 100%;
+    background-color: var(--default-bg);
+}
+
+main .main-content .content {
+    display: none;
+}
+
+main .main-content .content.show {
+    display: flex;
+}
+
+/* End Main CSS */
+
+
+/* Stack trace CSS */
+
+main #stack-trace {
+    min-height: calc(100vh - var(--nav-height));
+    max-height: calc(100vh - var(--nav-height));
+}
+
+main #stack-trace .trace {
+    overflow: auto;
+}
+
+main #stack-trace .trace .container {
+    display: flex;
+    cursor: pointer;
+}
+
+main #stack-trace .trace .container.last {
+    border-bottom: 1px solid var(--border);
+}
+
+main #stack-trace .trace .container * {
+    font-size: 0.75rem;
+}
+
+main #stack-trace .trace .container .trace-number,
+main #stack-trace .trace .container .file-info {
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+}
+
+main #stack-trace .trace .container .trace-number {
+    min-width: 2.7rem;
+    display: flex;
+    padding: 1rem 0;
+    justify-content: center;
+    align-items: end;
+    border-right: 2px solid #6EE7B7;
+    color: var(--main-color-active);
+    font-weight: 600;
+}
+
+main #stack-trace .trace .container .file-info {
+    padding: 1rem 1rem;
+    max-width: 24rem;
+}
+
+
+main #stack-trace .trace .container .file-info .file {
+    margin-bottom: 1rem;
+    color: var(--main-color-active);
+    font-weight: 600;
+}
+
+main #stack-trace .trace .container .file-info .class {
+    color: #6f6f6f;
+}
+
+main #stack-trace .trace .container.active,
+main #stack-trace .trace .container:hover {
+    background-color: #d5ffec;
+}
+
+main #stack-trace .trace .container.active .trace-number {
+    border-right-color: var(--main-color-active);
+}
+
+main #stack-trace .file-content {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    position: relative;
+}
+
+main #stack-trace .file-content.show {
+    display: flex;
+}
+
+main #stack-trace .file-content .file-info {
+    border: 1px solid var(--border);
+    border-right: none;
+    background-color: #c2f6e0;
+    padding: 1rem 1.5rem;
+    max-width: 100%;
+    position: relative;
+}
+
+main #stack-trace .file-content .code-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+main #stack-trace .file-content .code {
+    position: absolute;
+    overflow-x: auto;
+    overflow-y: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-grow: 1;
+}
+
+main #stack-trace .file-content .file-info * {
+    word-break: break-word;
+}
+
+main #stack-trace .file-content .file-info .class {
+    margin-bottom: 0.7rem;
+}
+
+main #stack-trace .file-content .file-info .class .class-string,
+main #stack-trace .file-content .file-info .class .method-string {
+    color: #6f6f6f;
+}
+
+main #stack-trace .file-content .file-info .file .file-string {
+    color: var(--main-color-active);
+    font-weight: 600;
+}
+
+main #stack-trace .file-content .file-info .file .line-string {
+    color: var(--main-color-active);
+}
+
+main #stack-trace .file-content .row {
+    position: relative;
+    display: flex;
+}
+
+main #stack-trace .file-content .row:first-child .line {
+    margin-top: 2rem;
+}
+
+main #stack-trace .file-content .row:first-child .line-number {
+    padding: 2rem 0 0.3rem 0.5rem;
+}
+
+main #stack-trace .file-content .row:last-child {
+    align-items: start;
+    height: 100%;
+}
+
+main #stack-trace .file-content .row:last-child .line {
+    margin-bottom: 2rem;
+}
+
+main #stack-trace .file-content .row:last-child .line pre {
+    min-height: 1em;
+}
+
+main #stack-trace .file-content .row:last-child .line-number {
+    align-items: start;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+main #stack-trace .file-content .row .line-number {
+    min-width: 2.8rem;
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-ligatures: none;
+    font-size: 0.7rem;
+    padding: 0.3rem 0 0.3rem 0.5rem;
+    background-color: #c2f6e0;
+    display: flex;
+    align-items: end;
+}
+
+main #stack-trace .file-content .row .line-number.active {
+    background-color: #10B981;
+}
+
+main #stack-trace .file-content .row .line {
+    padding: 0.3rem 0 0.3rem 2rem;
+    width: 100%;
+}
+
+main #stack-trace .file-content .row .line.active,
+main #stack-trace .file-content .row .line:hover {
+    background-color: #c2f6e0;
+}
+
+main #stack-trace .file-content .row .line pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-ligatures: none;
+    font-size: 0.7rem;
+    display: flex;
+    flex-grow: 1;
+}
+
+/* End stack trace CSS */
+
+
+/* Request CSS */
+
+main #request {
+    padding: 1.5rem 3rem;
+    flex-direction: column;
+}
+
+main .main-table {
+    border-collapse: collapse;
+}
+
+main .main-table > tbody > tr.heading > td {
+    font-weight: 600;
+}
+
+main .main-table > tbody > tr.heading > td,
+main .main-table > tbody > tr.heading > th {
+    padding-bottom: 0.5rem;
+}
+
+main .main-table > tbody > tr.seperator > td {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.7rem;
+}
+
+main .main-table > tbody > tr.margin-top > td,
+main .main-table > tbody > tr.margin-top > th {
+    padding-top: 2rem;
+}
+
+main .main-table > tbody > tr > th {
+    text-align: right;
+    padding-right: 1.5rem;
+    font-weight: 600;
+    color: var(--main-color);
+}
+
+main .main-table > tbody > tr > th,
+main .main-table > tbody > tr > td {
+    padding-top: 1rem;
+}
+
+main .main-table .sub-table {
+    border-collapse: collapse;
+}
+
+main .main-table .sub-table td,
+main .main-table .sub-table th {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    min-width: 10rem;
+}
+
+main .main-table .sub-table th {
+    color: var(--main-color);
+    font-weight: 500;
+}
+
+/* End Request CSS */
+
+
+/* Routes CSS */
+
+main #routes {
+    padding: 1.5rem 9rem;
+}
+
+main #routes .routes {
+    width: 100%;
+}
+
+main #routes h3 {
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+main #routes h3:not(:first-child) {
+    margin-top: 3rem;
+}
+
+main #routes .route-container {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+main #routes .route-container .main-table td {
+    width: 100%;
+}
+
+main #routes .route-container .main-table th,
+main #routes .route-container .main-table td {
+    padding-top: 0.2rem;
+}
+
+/* End Routes CSS */
+
+
+/* Context CSS */
+
+main #context {
+    padding: 1.5rem 6rem;
+}
+
+/* End Context CSS */
+
+
+@media screen and (max-width: 1600px) {
+    header, main {
+        width: var(--xl-width);
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    header, main {
+        width: var(--lg-width);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    header, main {
+        width: var(--md-width);
+    }
+}

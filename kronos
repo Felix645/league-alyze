@@ -1,0 +1,37 @@
+<?php
+
+
+use Symfony\Component\Console\Application;
+
+
+/*
+/ -----------------------------------------------------------------------------
+/ Define application directory constants used by the framework
+/ -----------------------------------------------------------------------------
+/
+/ Because those paths are set in composer.json for auto-loading
+/ they may not be changed!
+/
+*/
+
+if( !defined( __DIR__ ) ) define( __DIR__, dirname(__FILE__) );
+
+const ROOT_PATH = __DIR__ . '/';
+const CONTENT_PATH = ROOT_PATH . 'app/';
+
+$kronos = require ROOT_PATH . 'config/kronos.php';
+
+$console = new Application();
+
+$default_commands = $kronos['commands']['default'];
+$custom_commands = $kronos['commands']['custom'];
+
+foreach( $default_commands as $command ) {
+    $console->add($command);
+}
+
+foreach( $custom_commands as $command ) {
+    $console->add($command);
+}
+
+$console->run();

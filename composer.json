@@ -1,0 +1,25 @@
+{
+    "name": "palmer-ag/artemis",
+    "description": "PAG Artemis Framework",
+    "autoload": {
+        "psr-4": {
+            "Artemis\\": "./artemis",
+            "Artemis\\Resource\\": "./resource",
+            "Database\\Seeds\\": "./database/seeds",
+            "App\\": "./app"
+        }
+    },
+    "require": {
+        "illuminate/database": "^v8.50.0",
+        "phpmailer/phpmailer": "^v6.5.0",
+        "symfony/dotenv": "^v5.3.0",
+        "symfony/console": "^v5.3.2",
+        "notihnio/php-multipart-form-data-parser": "^1.0.0",
+        "eftec/bladeone": "^3.52",
+        "illuminate/pagination": "^v8.50.0",
+        "symfony/stopwatch": "^v5.3.0"
+    },
+    "require-dev": {
+        "kint-php/kint": "^3.3"
+    }
+}

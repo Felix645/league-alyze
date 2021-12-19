@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !^/_spielwiese
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # Route to index.php with uri get parameter to get the proper route
+    RewriteRule ^(.*)$ index.php?uri=/$1 [L,QSA]
+    # Allow access to app/assets/* , app/Assets/* and app/Views/*
+    RewriteRule ^(app/assets/*|app/Assets/*|app/Views/*) - [L]
+    # Forbid access to the following folders
+    RewriteRule ^(app/*|artemis/*|boot/*|cache/*|database/*|resource/*|config/*|vendor/*) - [F,L]
+</IfModule>
+
+# Forbid access to listed file extensions
+<Files ~ "\.(env|htaccess|htpasswd|json|lock|gitignore|php)">
+	Order deny,allow
+    Deny from all
+</Files>
+
+# Forbid access to kronos file
+<Files "kronos">
+	Order deny,allow
+    Deny from all
+</Files>
+
+# Allow access to index.php
+<Files "index.php">
+    Order deny,allow
+	Allow from all
+</Files>
+
