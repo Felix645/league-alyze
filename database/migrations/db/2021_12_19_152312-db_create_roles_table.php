@@ -28,6 +28,6 @@ class DbCreateRolesTable extends Migration
      */
     public function down() : void
     {
-        Schema::on('db');
+        Schema::on('db')->drop('roles');
     }
 }

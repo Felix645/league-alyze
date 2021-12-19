@@ -25,6 +25,7 @@ class DbCreateMatchesTable extends Migration
             $table->unsignedInteger('deaths');
             $table->unsignedInteger('assists');
             $table->unsignedInteger('creep_score');
+            $table->timestamps();
 
             $table->foreign('role_id')->references('id')->on('roles');
             $table->foreign('played_as')->references('id')->on('champions');
