@@ -1,1 +1,0 @@
-<p>Example Template</p>
