@@ -224,7 +224,7 @@ abstract class ErrorHandler implements HandlerInterface
             ResponseHandler::new($renderer->render());
         } catch(Throwable $ex) {
             if( $handle_count >= 5 ) {
-                die("There appears to be a problem with the exception handler: possibly infinite loop detected");
+                die("There appears to be a problem with the exception handler: possibly infinite loop detected: {$ex->getMessage()}");
             }
 
             $this->handle($ex, $handle_count + 1);
