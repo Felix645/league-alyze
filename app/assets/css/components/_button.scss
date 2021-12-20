@@ -1,0 +1,15 @@
+button.button {
+    border: none;
+    background: $card_background;
+    color: $secondary_text_color;
+    font-size: 22px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background: $nav_active_border;
+        color: $main_background;
+    }
+}

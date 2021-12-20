@@ -1,0 +1,20 @@
+html {
+    background-color: $main_background;
+}
+
+body {
+    display: flex;
+}
+
+main#app {
+    width: 100%;
+
+    .top-row {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: $main_margin_right;
+    }
+}

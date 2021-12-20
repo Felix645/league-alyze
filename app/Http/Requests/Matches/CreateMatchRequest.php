@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Matches;
 
+use Artemis\Client\Facades\Validation;
 use Artemis\Client\Http\FormRequest;
 use Artemis\Core\Interfaces\RedirectionInterface;
 
@@ -25,10 +26,10 @@ class CreateMatchRequest extends FormRequest
     protected function rules() : array
     {
         return [
-            'is_win'            => ['required', 'int', 'min:0', 'max:1'],
-            'role_id'           => ['required', 'int'],
-            'played_as'         => ['required'],
-            'played_against'    => ['required', 'different:played_as'],
+            'is_win'            => ['required', 'int', 'min:0', 'max:1', 'default:0'],
+            'role_id'           => ['required', 'int', 'min:0'],
+            'played_as'         => ['required', 'int', 'min:0'],
+            'played_against'    => ['required', 'int', 'min:0', 'different:played_as'],
             'kills'             => ['required', 'int', 'min:0'],
             'deaths'            => ['required', 'int', 'min:0'],
             'assists'           => ['required', 'int', 'min:0'],

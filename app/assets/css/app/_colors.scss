@@ -1,0 +1,33 @@
+$main_background: #1E014E;
+
+$nav_background: #330C73;
+$nav_active_border: #FC3A5D;
+$nav_hover_border: #E69640;
+
+$card_background: rgba(255, 255, 255, 0.2);
+
+$main_text_color: white;
+$secondary_text_color: #E0C8FE;
+
+$number_accent_bright_green: #40f840; 
+$number_accent_green: #06a106; 
+$number_accent_orange: #e39406; 
+$number_accent_red: red; 
+
+$modal_background: rgba(0, 0, 0, 0.85);
+
+.text-light-green {
+    color: $number_accent_bright_green !important;
+}
+
+.text-green {
+    color: $number_accent_green !important;
+}
+
+.text-orange {
+    color: $number_accent_orange !important;
+}
+
+.text-red {
+    color: $number_accent_red !important;
+}
