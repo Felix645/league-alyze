@@ -26,7 +26,7 @@ class CreateMatchRequest extends FormRequest
     protected function rules() : array
     {
         return [
-            'is_win'            => ['required', 'int', 'min:0', 'max:1', 'default:0'],
+            'is_win'            => ['int', 'min:0', 'max:1', 'default:0'],
             'role_id'           => ['required', 'int', 'min:0'],
             'played_as'         => ['required', 'int', 'min:0'],
             'played_against'    => ['required', 'int', 'min:0', 'different:played_as'],
