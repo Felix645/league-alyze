@@ -15,7 +15,7 @@ class Champion extends Eloquent
 {
     protected $connection = 'db';
 
-    public $timestamps = 'false';
+    public $timestamps = false;
 
     public function matchesPlayedAs() : HasMany
     {
@@ -42,6 +42,7 @@ class Champion extends Eloquent
             ->groupBy('played_as')
             ->groupBy('role_id')
             ->orderByDesc('winrate')
+            ->orderBy('played_as')
             ->limit(10)
             ->get();
 
@@ -51,12 +52,22 @@ class Champion extends Eloquent
             return $matches;
         }
 
-        return $matches->filter(function($value) use (&$champion_ids) {
+        $count = 0;
+        return $matches->filter(function($value) use (&$champion_ids, &$count) {
             if( in_array($value->played_as, $champion_ids) ) {
                 return false;
             }
 
+            if( $value->games_played <= 1 ) {
+                return false;
+            }
+
+            if( $count >= 3 ) {
+                return false;
+            }
+
             $champion_ids[] = $value->played_as;
+            $count++;
             return true;
         });
     }

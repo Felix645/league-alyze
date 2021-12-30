@@ -7,7 +7,9 @@
         <table>
             <tr>
                 <th>Role</th>
-                <td>{{ $champion->role->name }}</td>
+                <td >
+                    <img width="25px" src="{{ asset($champion->role->icon_path) }}" alt="{{ $champion->role->name }}">
+                </td>
             </tr>
             <tr>
                 <th>Matches</th>

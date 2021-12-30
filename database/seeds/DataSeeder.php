@@ -16,5 +16,6 @@ class DataSeeder extends Seeder
     {
         ChampionSeeder::seed();
         RoleSeeder::seed();
+        RoleIconPathSeeder::seed();
     }
 }

@@ -27,6 +27,9 @@ class TraceArgument
     {
         $this->args = $args;
 
+        if( !is_array($this->args) || !is_object($this->args) )
+            return;
+
         foreach( $this->args as $key => $arg ) {
             if( $key === array_key_first($this->args) ) {
                 $this->buildRender($arg, true);
