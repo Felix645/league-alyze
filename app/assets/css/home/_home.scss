@@ -53,10 +53,8 @@ main#home {
         justify-content: space-between;
 
         .role-card {
-            // background-color: $card_background;
             flex-basis: 230px;
             flex-grow: 1;
-            // padding: 25px 25px;
             border-radius: 20px;
     
             & * {

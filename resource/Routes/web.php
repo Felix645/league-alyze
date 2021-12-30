@@ -8,7 +8,7 @@ use Artemis\Client\Facades\Router;
 
 /* Define your web routes here */
 
-Router::get('/', [HomeController::class, 'index']);
+Router::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Router::get('/matches/new', [MatchesController::class, 'new'])->name('matches.index');
 Router::post('/matches', [MatchesController::class, 'create'])->name('matches.create');
