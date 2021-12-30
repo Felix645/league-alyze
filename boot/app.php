@@ -255,7 +255,7 @@ require_once ROOT_PATH . 'boot/pagination.php';
 / Return Application
 / -----------------------------------------------------------------------------
 /
-/ Returns the configured Application instance to the index.blade.php
+/ Returns the configured Application instance to the index.php
 /
 */
 
