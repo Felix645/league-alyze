@@ -3,7 +3,7 @@
     RewriteCond %{REQUEST_URI} !^/_spielwiese
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    # Route to index.php with uri get parameter to get the proper route
+    # Route to index.blade.php with uri get parameter to get the proper route
     RewriteRule ^(.*)$ index.php?uri=/$1 [L,QSA]
     # Allow access to app/assets/* , app/Assets/* and app/Views/*
     RewriteRule ^(app/assets/*|app/Assets/*|app/Views/*) - [L]
@@ -23,7 +23,7 @@
     Deny from all
 </Files>
 
-# Allow access to index.php
+# Allow access to index.blade.php
 <Files "index.php">
     Order deny,allow
 	Allow from all

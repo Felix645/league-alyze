@@ -7,9 +7,17 @@ use App\Models\Champion;
 use App\Models\Game;
 use App\Models\Role;
 use Artemis\Core\Interfaces\RedirectionInterface;
+use Artemis\Core\Template\View;
 
 class MatchesController
 {
+    public function index() : View
+    {
+        $matches = Game::getPagination();
+
+        return view('matches.index', compact('matches'));
+    }
+
     public function create(CreateMatchRequest $req) : RedirectionInterface
     {
         $req->validate();

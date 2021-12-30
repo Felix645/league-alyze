@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Artemis\Client\Eloquent;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * @property bool $is_win
@@ -26,6 +27,8 @@ class Game extends Eloquent
 
     protected $table = 'matches';
 
+    protected $dateFormat = 'Y-m-d H:i:s';
+
     protected $fillable = [
         'id',
         'is_win',
@@ -46,13 +49,54 @@ class Game extends Eloquent
         'is_win' => 'boolean',
     ];
 
+    public static function getPagination() : Paginator
+    {
+        return self::query()
+            ->with('champion_played_as', 'champion_played_against', 'role')
+            ->latest()
+            ->simplePaginate(7);
+    }
+
     public function champion_played_as() : BelongsTo
     {
         return $this->belongsTo(Champion::class, 'played_as');
     }
 
+    public function champion_played_against() : BelongsTo
+    {
+        return $this->belongsTo(Champion::class, 'played_against');
+    }
+
     public function role() : BelongsTo
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    /**
+     * Formats GETTER for created_at attribute
+     *
+     * @param $value
+     *
+     * @return string
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::createFromTimestamp(strtotime($value))
+            ->timezone('Europe/Berlin')
+            ->toDateTimeString();
+    }
+
+    /**
+     * Formats GETTER for updated_at attribute
+     *
+     * @param $value
+     *
+     * @return string
+     */
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::createFromTimestamp(strtotime($value))
+            ->timezone('Europe/Berlin')
+            ->toDateTimeString();
     }
 }

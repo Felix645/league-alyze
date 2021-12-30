@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="@yield('matches_active', '')">
-                <a href="">
+                <a href="{{ route('matches.index')->full() }}">
                     <i class="fas fa-history"></i>
                     Matches
                 </a>

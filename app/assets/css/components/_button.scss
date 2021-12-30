@@ -12,4 +12,8 @@ button.button {
         background: $nav_active_border;
         color: $main_background;
     }
+
+    &.disabled {
+        pointer-events: none;
+    }
 }

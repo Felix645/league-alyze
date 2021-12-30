@@ -1,0 +1,157 @@
+main#matches-index {
+    $base_font_color: rgb(30, 30, 30);
+    $win_background: rgb(170, 210, 255);
+    $loss_background: rgb(255, 166, 166);
+    $win_accent: rgb(4, 89, 158);
+    $loss_accent: rgb(150, 26, 26);
+    $champion_border_width: 3px;
+
+    section.matches {
+        margin: 30px 100px;
+
+        .load-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .matches-table {
+            .match {
+                display: flex;
+                margin-bottom: 20px;
+                height: 80px;
+                color: $base_font_color;
+
+                &.win {
+                    background-color: $win_background;
+                }
+
+                &.loss {
+                    background-color: $loss_background;
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 130px;
+                    font-size: 18px;
+
+                    .timestamp {
+                        padding-bottom: 5px;
+                    }
+
+                    .seperator {
+                        width: 50px;
+                        height: 2px;
+                        background-color: $base_font_color;
+                    }
+
+                    .result {
+                        padding-top: 5px;
+
+                        span {
+                            font-weight: 600;
+                        }
+
+                        .win {
+                            color: $win_accent;
+                        }
+
+                        .loss {
+                            color: $loss_accent;
+                        }
+                    }
+                }
+
+                .role {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 80px;
+
+                    img {
+                        width: 45px;
+                    }
+                }
+
+                .played-as, .played-against {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 110px;
+
+                    img {
+                        width: 60px;
+                    }
+                }
+
+                .played-as {
+                    img {
+                        border: $champion_border_width solid $win_accent;
+                    }
+                }
+
+                .played-against {
+                    img {
+                        border: $champion_border_width solid $loss_accent;
+                    }
+                }
+
+                .champion-divider {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 20px;
+                }
+
+                .kda {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 170px;
+                    
+                    .summary {
+                        font-size: 22px;
+                        font-weight: 500;
+
+                        .deaths {
+                            color: $loss_accent;
+                        }
+                    }
+
+                    .average {
+                        font-size: 19px;
+                    }
+                }
+
+                .cs {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 170px;
+
+                    .total {
+                        font-size: 22px;
+                    }
+
+                    .per-minute {
+                        font-size: 19px;
+                    }
+                }
+
+                .gametime {
+                    display: flex;
+                    flex-grow: 1;
+                    justify-content: flex-end;
+                    align-items: center;
+                    padding-right: 30px;
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
