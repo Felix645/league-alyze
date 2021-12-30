@@ -40,6 +40,7 @@
                     $(button_selector).replaceWith($(data.data.html_button));
 
                     loadMatchesListener();
+                    $('#main-loader').addClass('hide-loader');
                 })
                 .fail(function(data) {
                     // TODO: Do some error handling

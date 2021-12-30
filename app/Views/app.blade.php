@@ -15,6 +15,8 @@
 <body>
     @include('components.app.nav')
 
+    @include('components.app.loader')
+
     <main id="app">
         <div class="top-row">
             <button class="button" data-toggle="modal" data-target="#add-match-modal">
