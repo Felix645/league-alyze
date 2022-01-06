@@ -16,23 +16,23 @@ class RoleIconPathSeeder extends Seeder
     public function run() : void
     {
         Role::where('name', 'Top')->update([
-            'icon_path' => 'img/roles/icons/Top.png'
+            'icon_path' => 'img/roles/icons/Top.svg'
         ]);
 
         Role::where('name', 'Jungle')->update([
-            'icon_path' => 'img/roles/icons/Jungle.png'
+            'icon_path' => 'img/roles/icons/Jungle.svg'
         ]);
 
         Role::where('name', 'Mid')->update([
-            'icon_path' => 'img/roles/icons/Mid.png'
+            'icon_path' => 'img/roles/icons/Mid.svg'
         ]);
 
         Role::where('name', 'Bot')->update([
-            'icon_path' => 'img/roles/icons/Bot.png'
+            'icon_path' => 'img/roles/icons/Bot.svg'
         ]);
 
         Role::where('name', 'Support')->update([
-            'icon_path' => 'img/roles/icons/Support.png'
+            'icon_path' => 'img/roles/icons/Support.svg'
         ]);
     }
 }
