@@ -33,11 +33,11 @@ abstract class Rule
     /**
      * Returns the validation message.
      *
-     * @return string
+     * @return null|string
      */
     public function message()
     {
-        return 'Validation failed';
+        return null;
     }
 
     /**

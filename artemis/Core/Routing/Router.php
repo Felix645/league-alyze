@@ -647,24 +647,24 @@ class Router
             return;
         }
 
-        if( request()->needsJson() ) {
+        if( request()->needsJson() || request()->needsXml() ) {
             if( request()->has('_maintenance') ) {
                 if( Maintenance::secret() === request()->input('_maintenance') ) {
                     return;
                 }
             }
 
-            ResponseHandler::new(($this->maintenance_render)());
+            ResponseHandler::new(app()->container()->getCallback($this->maintenance_render));
         }
 
         if( !isset($_COOKIE[RouteServiceProvider::MAINTENANCE_SECRET_ROUTE_NAME]) ) {
-            ResponseHandler::new(($this->maintenance_render)());
+            ResponseHandler::new(app()->container()->getCallback($this->maintenance_render));
         }
 
         if( $_COOKIE[RouteServiceProvider::MAINTENANCE_SECRET_ROUTE_NAME] === Maintenance::secret() ) {
             return;
         }
 
-        ResponseHandler::new(($this->maintenance_render)());
+        ResponseHandler::new(app()->container()->getCallback($this->maintenance_render));
     }
 }

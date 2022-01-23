@@ -77,7 +77,7 @@ return [
             new Maintenance\Up()
         ],
         'custom' => [
-            // new MyCommand(),
+            new \App\Commands\Backup(),
         ],
     ]
 ];

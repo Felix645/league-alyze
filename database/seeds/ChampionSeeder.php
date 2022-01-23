@@ -15,7 +15,7 @@ class ChampionSeeder extends Seeder
      */
     public function run() : void
     {
-        $this->freshSeedReset('db', 'champions');#
+        $this->freshSeedReset('db', 'champions');
 
         Champion::query()->insert([
             ['name' => 'Aatrox', 'icon_path' => 'img/champions/icons/AatroxSquare.png'],
@@ -175,6 +175,7 @@ class ChampionSeeder extends Seeder
             ['name' => 'Zilean', 'icon_path' => 'img/champions/icons/ZileanSquare.png'],
             ['name' => 'Zoe', 'icon_path' => 'img/champions/icons/ZoeSquare.png'],
             ['name' => 'Zyra', 'icon_path' => 'img/champions/icons/ZyraSquare.png'],
+            ['name' => 'Zeri', 'icon_path' => 'img/champions/icons/ZeriSquare.png'],
         ]);
     }
 }

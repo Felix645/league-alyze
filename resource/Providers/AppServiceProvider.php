@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share([
-            'champions' => Champion::all(),
+            'champions' => Champion::query()->orderBy('name')->get(),
             'roles' => Role::all()
         ]);
     }

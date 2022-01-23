@@ -9,6 +9,7 @@ use Artemis\Support\Exceptions\Json\InvalidJsonException;
 use Artemis\Support\FileSystem;
 use Artemis\Support\Json;
 
+
 class Maintenance
 {
     /**
@@ -94,6 +95,13 @@ class Maintenance
         self::$conf_data = $data;
     }
 
+    /**
+     * Builds the data for the maintenance.json file.
+     *
+     * @param bool $is_down Identifier if the app is down state or not.
+     *
+     * @return array Maintenance data array.
+     */
     private static function buildData($is_down = true)
     {
         return [
@@ -102,11 +110,13 @@ class Maintenance
         ];
     }
 
+    /**
+     * Generates the UUID that is needed for bypassing the maintenance mode.
+     *
+     * @return string Generated UUID.
+     */
     private static function buildSecret()
     {
-        return Hash::hexToken(2)
-            . '-' . Hash::hexToken(2)
-            . '-' . Hash::hexToken(2)
-            . '-' . Hash::hexToken(2);
+        return Hash::uuid();
     }
 }

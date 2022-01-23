@@ -58,7 +58,7 @@ class Champion extends Eloquent
                 return false;
             }
 
-            if( $value->games_played <= 1 ) {
+            if( $value->games_played <= 2 ) {
                 return false;
             }
 

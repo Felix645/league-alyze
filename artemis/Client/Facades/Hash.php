@@ -12,6 +12,7 @@ namespace Artemis\Client\Facades;
  * @method static string hashPassword(string $password)
  * @method static bool verifyPassword(string $password, string $hash)
  * @method static string hexToken(int $length)
+ * @method static string uuid() Generates a random v4 UUID.
  * @method static string randString($length = 10, $lower = false)
  * @method static string encrypt(mixed $data, string $secret_key) Encrypts given data and returns encrypted hash.
  * @method static mixed decrypt(string $hash, string $secret_key) Decrypts given hash and return decrypted data.
@@ -20,6 +21,7 @@ namespace Artemis\Client\Facades;
  * @uses \Artemis\Core\Hash\Hash::hashPassword()
  * @uses \Artemis\Core\Hash\Hash::verifyPassword()
  * @uses \Artemis\Core\Hash\Hash::hexToken()
+ * @uses \Artemis\Core\Hash\Hash::uuid()
  * @uses \Artemis\Core\Hash\Hash::randString()
  * @uses \Artemis\Core\Hash\Hash::encrypt()
  * @uses \Artemis\Core\Hash\Hash::decrypt()

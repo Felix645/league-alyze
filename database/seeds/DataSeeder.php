@@ -14,6 +14,8 @@ class DataSeeder extends Seeder
      */
     public function run() : void
     {
+        $this->freshSeedReset('db', 'matches');
+
         ChampionSeeder::seed();
         RoleSeeder::seed();
         RoleIconPathSeeder::seed();

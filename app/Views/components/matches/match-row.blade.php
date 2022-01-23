@@ -27,7 +27,12 @@
             <span class="kills">{{ $match->kills }}</span>/<span class="deaths">{{ $match->deaths }}</span>/<span class="assists">{{ $match->assists }}</span>
         </div>
         <div class="average">
-            {{ formatNumber((($match->kills + $match->assists) / $match->deaths), 1) }} KDA
+            @if($match->deaths === 0)
+                Perfect KDA
+            @else
+                {{ formatNumber((($match->kills + $match->assists) / $match->deaths), 1) }} KDA
+            @endif
+
         </div>
     </div>
     <div class="cs">

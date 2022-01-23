@@ -117,15 +117,19 @@ class Error
      */
     private function buildErrorMessage()
     {
-        $config = require ROOT_PATH . 'config/validation.php';
-
         if( $this->failed_rule instanceof Rule ) {
-            return $this->failed_rule->message();
+            $message = $this->failed_rule->message();
+
+            if( is_string($message) ) {
+                return $message;
+            }
         }
 
         if( !is_string($this->failed_rule) ) {
             throw new ValidationException('Invalid rule specified');
         }
+
+        $config = require ROOT_PATH . 'config/validation.php';
 
         $message_template = $config['field'][$this->field_name]
             ?? $config['field_rule'][$this->failed_rule][$this->field_name]
