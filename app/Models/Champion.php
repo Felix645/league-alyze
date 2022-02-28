@@ -41,9 +41,10 @@ class Champion extends Eloquent
             )
             ->groupBy('played_as')
             ->groupBy('role_id')
+            ->havingRaw('games_played > 1')
             ->orderByDesc('winrate')
             ->orderBy('played_as')
-            ->limit(10)
+            ->limit(20)
             ->get();
 
         $champion_ids = [];

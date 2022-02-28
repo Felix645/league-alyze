@@ -105,7 +105,7 @@ class ChampionSeeder extends Seeder
             ['name' => 'Nunu & Willump', 'icon_path' => 'img/champions/icons/Nunu_&_WillumpSquare.png'],
             ['name' => 'Olaf', 'icon_path' => 'img/champions/icons/OlafSquare.png'],
             ['name' => 'Orianna', 'icon_path' => 'img/champions/icons/OriannaSquare.png'],
-            ['name' => 'Orrn', 'icon_path' => 'img/champions/icons/OrrnSquare.png'],
+            ['name' => 'Ornn', 'icon_path' => 'img/champions/icons/OrnnSquare.png'],
             ['name' => 'Pantheon', 'icon_path' => 'img/champions/icons/PantheonSquare.png'],
             ['name' => 'Poppy', 'icon_path' => 'img/champions/icons/PoppySquare.png'],
             ['name' => 'Pyke', 'icon_path' => 'img/champions/icons/PykeSquare.png'],
