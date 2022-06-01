@@ -99,7 +99,7 @@ class Backup extends Command
 
         $output->writeln('Writing new backup file ...');
 
-        Json::writeJsonFile($matches, app()->root() . 'storage/backup/matches/' . $file_name, JSON_PRETTY_PRINT);
+        Json::writeJsonFile($matches, app()->root() . 'storage/backup/matches/' . $file_name);
 
         $output->writeln('New backup file created!');
         $output->writeln($this->seperator);

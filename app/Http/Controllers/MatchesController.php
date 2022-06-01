@@ -15,7 +15,10 @@ class MatchesController
     {
         $matches = Game::getPagination();
 
-        return view('matches.index', compact('matches'));
+        return view('matches.index', [
+            'matches' => $matches,
+            'first_call' => true
+        ]);
     }
 
     public function create(CreateMatchRequest $req) : RedirectionInterface

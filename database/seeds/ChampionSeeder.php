@@ -176,6 +176,7 @@ class ChampionSeeder extends Seeder
             ['name' => 'Zoe', 'icon_path' => 'img/champions/icons/ZoeSquare.png'],
             ['name' => 'Zyra', 'icon_path' => 'img/champions/icons/ZyraSquare.png'],
             ['name' => 'Zeri', 'icon_path' => 'img/champions/icons/ZeriSquare.png'],
+            ['name' => 'Renata Glasc', 'icon_path' => 'img/champions/icons/Renata_GlascSquare.png'],
         ]);
     }
 }

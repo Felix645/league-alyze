@@ -21,7 +21,10 @@ class MatchesController
 
         $data = [
             'html_matches' => $matches_html,
-            'html_button' => view('components.matches.load-button', compact('matches'))->render()
+            'html_button' => view('components.matches.load-button', [
+                'matches' => $matches,
+                'first_call' => false
+            ])->render()
         ];
 
         return api()->data($data)->ok();
