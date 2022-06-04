@@ -4,17 +4,11 @@
 
 @section('content')
     <main id="matches-index">
-        <div class="form-group table-filter">
-            <div class="input table-filter">
-                <label for="game_mode_id">Game Mode</label>
-                <select name="game_mode_id" id="matches_game_mode_id">
-                    <option value="{{ \App\Models\GameMode::ALL_ID }}" selected>All</option>
-                    @foreach($modes as $mode)
-                        <option value="{{ $mode->id }}">{{ $mode->title }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+        @include('components.app.game-mode-selection', [
+            'id' => 'matches_game_mode_id',
+            'name' => 'matches_game_mode_id',
+            'modes' => $modes
+        ])
         <section class="matches">
             <div class="matches-table">
                 @foreach($matches as $match)
