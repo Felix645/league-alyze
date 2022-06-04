@@ -26,7 +26,7 @@ class Champion extends Eloquent
     {
         $matches = Game::query()
             ->with(['champion_played_as', 'role'])
-            ->when($mode !== 'all', function($query) use ($mode) {
+            ->when($mode !== GameMode::ALL_ID, function($query) use ($mode) {
                 return $query->where('game_mode_id', $mode);
             })
             ->selectRaw(

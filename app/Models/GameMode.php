@@ -10,6 +10,8 @@ use Artemis\Client\Eloquent;
  */
 class GameMode extends Eloquent
 {
+    public const ALL_ID = 'all';
+
     protected $connection = 'db';
 
     public $timestamps = false;

@@ -36,7 +36,7 @@ class Role extends Eloquent
     {
         return Game::query()
             ->with(['role'])
-            ->when($mode !== 'all', function($query) use ($mode) {
+            ->when($mode !== GameMode::ALL_ID, function($query) use ($mode) {
                 return $query->where('game_mode_id', $mode);
             })
             ->selectRaw('

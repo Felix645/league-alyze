@@ -8,7 +8,7 @@
             <div class="input table-filter">
                 <label for="game_mode_id">Game Mode</label>
                 <select name="game_mode_id" id="matches_game_mode_id">
-                    <option value="all" selected>All</option>
+                    <option value="{{ \App\Models\GameMode::ALL_ID }}" selected>All</option>
                     @foreach($modes as $mode)
                         <option value="{{ $mode->id }}">{{ $mode->title }}</option>
                     @endforeach

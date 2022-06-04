@@ -54,7 +54,7 @@ class Game extends Eloquent
     {
         return self::query()
             ->with('champion_played_as', 'champion_played_against', 'role', 'mode')
-            ->when($mode !== 'all', function($query) use ($mode) {
+            ->when($mode !== GameMode::ALL_ID, function($query) use ($mode) {
                 return $query->where('game_mode_id', $mode);
             })
             ->latest()

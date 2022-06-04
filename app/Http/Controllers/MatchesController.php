@@ -14,7 +14,7 @@ class MatchesController
 {
     public function index() : View
     {
-        $matches = Game::getPagination('all');
+        $matches = Game::getPagination(GameMode::ALL_ID);
 
         return view('matches.index', [
             'matches' => $matches,
