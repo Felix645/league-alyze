@@ -10,6 +10,9 @@
             @endif
         </div>
     </div>
+    <div class="mode">
+        <span class="loss">{{ $match->mode->title }}</span>
+    </div>
     <div class="role">
         <img src="{{ asset($match->role->icon_path) }}" alt="{{ $match->role->name }}">
     </div>

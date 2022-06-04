@@ -9,6 +9,7 @@ use Artemis\Core\Interfaces\RedirectionInterface;
 /**
  * @property int $is_win
  * @property int $role_id
+ * @property int $game_mode_id
  * @property string $played_as
  * @property string $played_against
  * @property int $kills
@@ -28,6 +29,7 @@ class CreateMatchRequest extends FormRequest
         return [
             'is_win'            => ['int', 'min:0', 'max:1', 'default:0'],
             'role_id'           => ['required', 'int', 'min:0'],
+            'game_mode_id'      => ['required', 'int', 'min:0'],
             'played_as'         => ['required', 'int', 'min:0'],
             'played_against'    => ['required', 'int', 'min:0', 'different:played_as'],
             'kills'             => ['required', 'int', 'min:0'],

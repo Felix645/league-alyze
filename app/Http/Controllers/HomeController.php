@@ -10,8 +10,8 @@ class HomeController
 {
     public function index() : View
     {
-        $top_champions = Champion::getTopPerformingChampions();
-        $top_roles = Role::getTopRoles();
+        $top_champions = Champion::getTopPerformingChampions('all');
+        $top_roles = Role::getTopRoles('all');
 
         return view('home.index', compact('top_champions', 'top_roles'));
     }

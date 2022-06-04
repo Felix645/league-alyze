@@ -15,5 +15,6 @@ Router::get('/matches', [MatchesController::class, 'index'])->name('matches.inde
 Router::post('/matches', [MatchesController::class, 'create'])->name('matches.create');
 
 Router::get('/live-components/matches/load', [Live\MatchesController::class, 'loadMatches'])->name('live.matches.load');
+Router::get('/live-components/home/load', [Live\HomeController::class, 'loadHome'])->name('live.home.load');
 
 /* ------ */

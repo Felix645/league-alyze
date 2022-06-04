@@ -65,6 +65,14 @@ main#matches-index {
                     }
                 }
 
+                .mode {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 18px;
+                    width: 120px;
+                }
+
                 .role {
                     display: flex;
                     justify-content: center;

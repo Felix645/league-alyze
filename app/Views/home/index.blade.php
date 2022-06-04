@@ -4,31 +4,26 @@
 
 @section('content')
     <main id="home">
-        <section class="top-champions">
-            @set($counter = 0)
+        <div class="form-group table-filter">
+            <div class="input table-filter">
+                <label for="home_game_mode_id">Game Mode</label>
+                <select name="game_mode_id" id="home_game_mode_id">
+                    <option value="all" selected>All</option>
+                    @foreach($modes as $mode)
+                        <option value="{{ $mode->id }}">{{ $mode->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
 
-            @forelse( $top_champions as $champion )
-                @include('components.home.champion', ['champion' => $champion])
-
-                @set($counter)
-            @empty
-                @for($i = 0; $i < 3; $i++)
-                    @include('components.home.champion-placeholder')
-                    @set($counter)
-                @endfor
-            @endforelse
-
-            @if( $top_champions->count() < 3 )
-                @for($i = 0; $i < (3 - $counter); $i++)
-                    @include('components.home.champion-placeholder')
-                @endfor
-            @endif
-        </section>
-
-        <section class="top-roles">
-            @foreach($top_roles as $role)
-                @include('components.home.role', ['role' => $role])
-            @endforeach
-        </section>
+        @include('components.home.content', compact('top_champions', 'top_roles'))
     </main>
+@endsection
+
+@section('js')
+    <script>
+        let load_matches_url = '{{ route('live.home.load')->full() }}';
+    </script>
+
+    <script type="module" src="{{ asset('/js/home/index.js') }}"></script>
 @endsection

@@ -5,10 +5,9 @@ namespace App\Http\Requests\Matches;
 use Artemis\Client\Http\FormRequest;
 
 /**
- * @property int $mode
- * @property int $page
+ * @property string $mode
  */
-class GetMatchesRequest extends FormRequest
+class GetHomeRequest extends FormRequest
 {
     /**
      * @inheritDoc
@@ -17,7 +16,6 @@ class GetMatchesRequest extends FormRequest
     {
         return [
             'mode' => 'required',
-            'page' => 'required|int|min:1'
         ];
     }
 

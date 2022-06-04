@@ -1,15 +1,15 @@
 main#home {
     section.top-champions {
         display: flex;
-        margin: 50px $main_margin_right;
+        margin: 30px $main_margin_right;
         flex-wrap: wrap;
         gap: 20px;
         justify-content: space-between;
     
         .champion-card {
             background-color: $card_background;
-            flex-basis: 370px;
-            padding: 25px 25px;
+            flex-basis: 410px;
+            padding: 15px 15px;
             border-radius: 20px;
     
             & * {
@@ -21,7 +21,7 @@ main#home {
                 font-size: 20px;
     
                 img {
-                    width: 120px;
+                    width: 100px;
                     margin-top: 10px;
                     margin-bottom: 20px;
                 }

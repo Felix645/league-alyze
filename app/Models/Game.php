@@ -31,6 +31,7 @@ class Game extends Eloquent
 
     protected $fillable = [
         'id',
+        'game_mode_id',
         'is_win',
         'role_id',
         'played_as',
@@ -49,10 +50,13 @@ class Game extends Eloquent
         'is_win' => 'boolean',
     ];
 
-    public static function getPagination() : Paginator
+    public static function getPagination(string $mode) : Paginator
     {
         return self::query()
-            ->with('champion_played_as', 'champion_played_against', 'role')
+            ->with('champion_played_as', 'champion_played_against', 'role', 'mode')
+            ->when($mode !== 'all', function($query) use ($mode) {
+                return $query->where('game_mode_id', $mode);
+            })
             ->latest()
             ->simplePaginate(7);
     }
@@ -70,6 +74,11 @@ class Game extends Eloquent
     public function role() : BelongsTo
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function mode() : BelongsTo
+    {
+        return $this->belongsTo(GameMode::class, 'game_mode_id');
     }
 
     /**

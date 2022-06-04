@@ -18,9 +18,9 @@ class Role extends Eloquent
 
     protected $fillable = ['id', 'name', 'icon_path'];
 
-    public static function getTopRoles() : Collection
+    public static function getTopRoles(string $mode) : Collection
     {
-        $top_roles = self::queryTopRoles();
+        $top_roles = self::queryTopRoles($mode);
         $missing_roles = self::queryMissingRoles($top_roles);
 
         /** @var Role $missing_role */
@@ -32,10 +32,13 @@ class Role extends Eloquent
         return $top_roles;
     }
 
-    private static function queryTopRoles() : Collection
+    private static function queryTopRoles(string $mode) : Collection
     {
         return Game::query()
             ->with(['role'])
+            ->when($mode !== 'all', function($query) use ($mode) {
+                return $query->where('game_mode_id', $mode);
+            })
             ->selectRaw('
                 role_id, 
                 COUNT(id) as games_played, 

@@ -40,6 +40,10 @@
         font-size: 20px;
         margin-bottom: 8px;
     }
+
+    &.table-filter {
+      margin-bottom: 0px !important;
+    }
 }
 
 .form-group {
@@ -48,5 +52,9 @@
 
     &.center {
         justify-content: center;
+    }
+
+    &.table-filter {
+      margin: 0px $main_margin_right;
     }
 }

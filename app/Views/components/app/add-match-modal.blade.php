@@ -27,6 +27,16 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="input">
+                        <label for="game_mode_id">Select game mode</label>
+                        <select name="game_mode_id" id="game_mode_id">
+                            <option value="" selected>Please select ...</option>
+                            @foreach($modes as $mode)
+                                <option value="{{ $mode->id }}">{{ $mode->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">

@@ -1,6 +1,10 @@
+export let showLoader = function() {
+    $('#main-loader').removeClass('hide-loader');
+};
+
 export let listenForLoaderToggle = function() {
     $('[data-toggle_loader]').click(function() {
-        $('#main-loader').removeClass('hide-loader');
+        showLoader();
     });
 };
 
@@ -10,6 +14,6 @@ export let hideLoader = function() {
 
 export let reapplyLoaderListener = function(selector) {
     $(selector).click(function() {
-        $('#main-loader').removeClass('hide-loader');
+        showLoader();
     });
 };

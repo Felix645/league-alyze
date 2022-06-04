@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Matches\CreateMatchRequest;
 use App\Models\Champion;
 use App\Models\Game;
+use App\Models\GameMode;
 use App\Models\Role;
 use Artemis\Core\Interfaces\RedirectionInterface;
 use Artemis\Core\Template\View;
@@ -13,7 +14,7 @@ class MatchesController
 {
     public function index() : View
     {
-        $matches = Game::getPagination();
+        $matches = Game::getPagination('all');
 
         return view('matches.index', [
             'matches' => $matches,
@@ -37,7 +38,11 @@ class MatchesController
         }
 
         if( !Role::where('id', $req->role_id)->exists() ) {
-            return redirect()->back()->withError('role_id', 'Please enter a role.');
+            return redirect()->back()->withError('role_id', 'Please enter a valid role.');
+        }
+
+        if( !GameMode::where('id', $req->game_mode_id)->exists() ) {
+            return redirect()->back()->withError('role_id', 'Please enter a valid game mode.');
         }
 
         $body = $req->validated();

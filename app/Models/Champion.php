@@ -22,10 +22,13 @@ class Champion extends Eloquent
         return $this->hasMany(Game::class, 'played_as');
     }
 
-    public static function getTopPerformingChampions() : Collection
+    public static function getTopPerformingChampions(string $mode) : Collection
     {
         $matches = Game::query()
             ->with(['champion_played_as', 'role'])
+            ->when($mode !== 'all', function($query) use ($mode) {
+                return $query->where('game_mode_id', $mode);
+            })
             ->selectRaw(
                 '
                 role_id, 

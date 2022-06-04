@@ -11,7 +11,7 @@ class MatchesController
     {
         $req->validate();
 
-        $matches = Game::getPagination();
+        $matches = Game::getPagination($req->mode);
 
         $matches_html = '';
 
